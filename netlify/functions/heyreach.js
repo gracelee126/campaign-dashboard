@@ -7,7 +7,7 @@ export default async (req, context) => {
   }
 
   const HEYREACH_API_KEY = process.env.HEYREACH_API_KEY;
-  const HEYREACH_BASE_URL = 'https://api.heyreach.io';
+  const HEYREACH_BASE_URL = 'https://api.heyreach.io/api/public';
 
   if (!HEYREACH_API_KEY) {
     return new Response(
@@ -21,17 +21,19 @@ export default async (req, context) => {
     const page = body.page || 1;
     const limit = body.limit || 100;
 
-    // Try GET request with query parameters
-    const response = await axios.get(
-      `${HEYREACH_BASE_URL}/campaigns`,
+    // Try POST request with body parameters (disable redirects to see actual response)
+    const response = await axios.post(
+      `${HEYREACH_BASE_URL}/campaigns/fetch`,
       {
-        params: {
-          page,
-          limit,
-        },
+        page,
+        limit,
+      },
+      {
         headers: {
           'X-API-KEY': HEYREACH_API_KEY,
+          'Content-Type': 'application/json',
         },
+        maxRedirects: 0,
       }
     );
 
