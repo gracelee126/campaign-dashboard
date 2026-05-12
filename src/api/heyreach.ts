@@ -26,13 +26,12 @@ export async function fetchHeyReachCampaigns(): Promise<Campaign[]> {
 
     // Fetch all campaigns with pagination
     while (true) {
-      const response = await axios.get<{ data: HeyReachCampaignResponse[] }>(
+      const response = await axios.post<{ data: HeyReachCampaignResponse[] }>(
         HEYREACH_FUNCTION_URL,
         {
-          params: {
-            page,
-            limit: pageSize,
-          },
+          endpoint: 'Campaigns/GetCampaigns',
+          page,
+          limit: pageSize,
         }
       )
 
