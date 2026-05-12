@@ -19,11 +19,9 @@ export default async (req, context) => {
   try {
     const body = await req.json();
 
-    // Extract endpoint from request body or use default
-    const endpoint = body.endpoint || 'Campaigns/GetCampaigns';
-
+    // Use fixed campaigns endpoint
     const response = await axios.post(
-      `${HEYREACH_BASE_URL}/${endpoint}`,
+      `${HEYREACH_BASE_URL}/campaigns`,
       body,
       {
         headers: {

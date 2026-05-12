@@ -29,7 +29,6 @@ export async function fetchHeyReachCampaigns(): Promise<Campaign[]> {
       const response = await axios.post<{ data: HeyReachCampaignResponse[] }>(
         HEYREACH_FUNCTION_URL,
         {
-          endpoint: 'Campaigns/GetCampaigns',
           page,
           limit: pageSize,
         }
