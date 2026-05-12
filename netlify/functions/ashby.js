@@ -6,12 +6,12 @@ export default async (req, context) => {
     return new Response('Method not allowed', { status: 405 });
   }
 
-  const ASHBY_API_KEY = process.env.VITE_ASHBY_API_KEY;
+  const ASHBY_API_KEY = process.env.ASHBY_API_KEY;
   const ASHBY_BASE_URL = 'https://api.ashbyhq.com/graphql';
 
   if (!ASHBY_API_KEY) {
     return new Response(
-      JSON.stringify({ error: 'VITE_ASHBY_API_KEY not configured' }),
+      JSON.stringify({ error: 'ASHBY_API_KEY not configured in Netlify environment' }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
   }

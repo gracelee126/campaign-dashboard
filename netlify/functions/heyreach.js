@@ -6,12 +6,12 @@ export default async (req, context) => {
     return new Response('Method not allowed', { status: 405 });
   }
 
-  const HEYREACH_API_KEY = process.env.VITE_HEYREACH_API_KEY;
+  const HEYREACH_API_KEY = process.env.HEYREACH_API_KEY;
   const HEYREACH_BASE_URL = 'https://api.heyreach.io/api';
 
   if (!HEYREACH_API_KEY) {
     return new Response(
-      JSON.stringify({ error: 'VITE_HEYREACH_API_KEY not configured' }),
+      JSON.stringify({ error: 'HEYREACH_API_KEY not configured in Netlify environment' }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
   }
