@@ -23,8 +23,11 @@ export default async (req, context) => {
       ASHBY_BASE_URL,
       body,
       {
+        auth: {
+          username: ASHBY_API_KEY,
+          password: ''
+        },
         headers: {
-          'Authorization': `Bearer ${ASHBY_API_KEY}`,
           'Content-Type': 'application/json',
         },
       }
