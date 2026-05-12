@@ -18,15 +18,19 @@ export default async (req, context) => {
 
   try {
     const body = await req.json();
+    const page = body.page || 1;
+    const limit = body.limit || 100;
 
-    // Use fixed campaigns endpoint
-    const response = await axios.post(
-      `${HEYREACH_BASE_URL}/campaigns/list`,
-      body,
+    // Try GET request with query parameters
+    const response = await axios.get(
+      `${HEYREACH_BASE_URL}/campaigns`,
       {
+        params: {
+          page,
+          limit,
+        },
         headers: {
           'X-API-KEY': HEYREACH_API_KEY,
-          'Content-Type': 'application/json',
         },
       }
     );
@@ -37,10 +41,14 @@ export default async (req, context) => {
     });
   } catch (error) {
     console.error('Error calling HeyReach API:', error);
+    console.error('Status:', error.response?.status);
+    console.error('Data:', error.response?.data);
     return new Response(
       JSON.stringify({
         error: 'Failed to fetch from HeyReach API',
-        message: error.message
+        message: error.message,
+        status: error.response?.status,
+        data: error.response?.data,
       }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
