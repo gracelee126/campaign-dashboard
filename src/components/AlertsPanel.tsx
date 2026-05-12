@@ -6,9 +6,9 @@ interface AlertsPanelProps {
 }
 
 export default function AlertsPanel({ alerts }: AlertsPanelProps) {
-  const errorAlerts = alerts.filter(a => a.severity === 'error')
-  const warningAlerts = alerts.filter(a => a.severity === 'warning')
-  const infoAlerts = alerts.filter(a => a.severity === 'info')
+  const errorAlerts = alerts.filter(a => a.type === 'error')
+  const warningAlerts = alerts.filter(a => a.type === 'warning')
+  const infoAlerts = alerts.filter(a => a.type === 'info')
 
   const getAlertIcon = (severity: string) => {
     switch (severity) {
@@ -50,8 +50,8 @@ export default function AlertsPanel({ alerts }: AlertsPanelProps) {
                 <span className="alert-icon">{getAlertIcon('error')}</span>
                 <div className="alert-content">
                   <p className="alert-message">{alert.message}</p>
-                  {alert.details && (
-                    <p className="alert-details">{alert.details}</p>
+                  {alert.detail && (
+                    <p className="alert-details">{alert.detail}</p>
                   )}
                 </div>
               </div>
@@ -71,8 +71,8 @@ export default function AlertsPanel({ alerts }: AlertsPanelProps) {
                 <span className="alert-icon">{getAlertIcon('warning')}</span>
                 <div className="alert-content">
                   <p className="alert-message">{alert.message}</p>
-                  {alert.details && (
-                    <p className="alert-details">{alert.details}</p>
+                  {alert.detail && (
+                    <p className="alert-details">{alert.detail}</p>
                   )}
                 </div>
               </div>
@@ -92,8 +92,8 @@ export default function AlertsPanel({ alerts }: AlertsPanelProps) {
                 <span className="alert-icon">{getAlertIcon('info')}</span>
                 <div className="alert-content">
                   <p className="alert-message">{alert.message}</p>
-                  {alert.details && (
-                    <p className="alert-details">{alert.details}</p>
+                  {alert.detail && (
+                    <p className="alert-details">{alert.detail}</p>
                   )}
                 </div>
               </div>

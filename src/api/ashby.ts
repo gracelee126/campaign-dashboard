@@ -14,6 +14,7 @@ interface AshbyJobResponse {
   locationCountry: string
   createdAt: string
   pipelineStages?: {
+    name: string
     totalApplicationCount: number
     scheduledInterviewCount: number
   }[]
