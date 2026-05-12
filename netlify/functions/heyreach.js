@@ -21,7 +21,7 @@ export default async (req, context) => {
 
     // Use fixed campaigns endpoint
     const response = await axios.post(
-      `${HEYREACH_BASE_URL}/campaigns`,
+      `${HEYREACH_BASE_URL}/campaigns/list`,
       body,
       {
         headers: {
