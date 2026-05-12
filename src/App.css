@@ -1,0 +1,111 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f1f5f9;
+}
+
+.dashboard-content {
+  flex: 1;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+/* Badges and Status Indicators */
+.badge {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.badge-active {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.badge-paused {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.badge-completed {
+  background: #dbeafe;
+  color: #0c2340;
+}
+
+.badge-recruiting {
+  background: #e9d5ff;
+  color: #6b21a8;
+}
+
+.badge-client {
+  background: #ddd6fe;
+  color: #3730a3;
+}
+
+/* Alert Card Styling */
+.alert-card {
+  border: 2px solid #fecaca !important;
+}
+
+.alert-card .stat-value {
+  color: #dc2626;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-content {
+    padding: 1rem;
+  }
+
+  .campaign-table-section h2,
+  .roles-list-section h2,
+  .alerts-panel h2 {
+    font-size: 1.125rem;
+  }
+
+  .campaign-table {
+    font-size: 0.8125rem;
+  }
+
+  .campaign-table th,
+  .campaign-table td {
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-content {
+    padding: 0.75rem;
+  }
+
+  .table-wrapper {
+    font-size: 0.75rem;
+  }
+
+  .campaign-table th,
+  .campaign-table td {
+    padding: 0.5rem;
+  }
+
+  .campaign-name {
+    max-width: 100px;
+  }
+
+  .roles-grid {
+    grid-template-columns: 1fr;
+  }
+}

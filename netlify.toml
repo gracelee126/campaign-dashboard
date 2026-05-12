@@ -1,0 +1,41 @@
+# Build configuration for Netlify deployment
+[build]
+  # Command to build the application
+  command = "npm run build"
+  # Directory containing build output
+  publish = "dist"
+  # Node.js version
+  node_version = "18.16.0"
+
+# Deployment context configuration
+[build.environment]
+  # Environment variables (set in Netlify dashboard)
+  # VITE_HEYREACH_API_KEY
+  # VITE_ASHBY_API_KEY
+  # VITE_DASHBOARD_PASSWORD
+
+# Redirect configuration for SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Cache configuration
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
