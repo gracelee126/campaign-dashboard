@@ -7,7 +7,7 @@ export default async (req, context) => {
   }
 
   const HEYREACH_API_KEY = process.env.HEYREACH_API_KEY;
-  const HEYREACH_BASE_URL = 'https://api.heyreach.io/api/public';
+  const HEYREACH_BASE_URL = 'https://api.heyreach.io';
 
   if (!HEYREACH_API_KEY) {
     return new Response(
