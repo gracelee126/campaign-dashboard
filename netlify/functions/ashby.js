@@ -19,15 +19,15 @@ export default async (req, context) => {
   try {
     const body = await req.json();
 
+    // Create Basic Auth header manually
+    const credentials = Buffer.from(`${ASHBY_API_KEY}:`).toString('base64');
+
     const response = await axios.post(
       ASHBY_BASE_URL,
       body,
       {
-        auth: {
-          username: ASHBY_API_KEY,
-          password: ''
-        },
         headers: {
+          'Authorization': `Basic ${credentials}`,
           'Content-Type': 'application/json',
         },
       }
