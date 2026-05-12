@@ -1,8 +1,7 @@
 import axios from 'axios'
 import type { Campaign } from '../types/index'
 
-const HEYREACH_API_KEY = import.meta.env.VITE_HEYREACH_API_KEY
-const HEYREACH_BASE_URL = 'https://api.heyreach.io/api'
+const HEYREACH_FUNCTION_URL = '/.netlify/functions/heyreach'
 
 interface HeyReachCampaignResponse {
   id: string
@@ -20,11 +19,6 @@ interface HeyReachCampaignResponse {
 }
 
 export async function fetchHeyReachCampaigns(): Promise<Campaign[]> {
-  if (!HEYREACH_API_KEY) {
-    console.error('VITE_HEYREACH_API_KEY not set')
-    return []
-  }
-
   try {
     const campaigns: Campaign[] = []
     let page = 1
@@ -33,15 +27,11 @@ export async function fetchHeyReachCampaigns(): Promise<Campaign[]> {
     // Fetch all campaigns with pagination
     while (true) {
       const response = await axios.get<{ data: HeyReachCampaignResponse[] }>(
-        `${HEYREACH_BASE_URL}/campaigns`,
+        HEYREACH_FUNCTION_URL,
         {
           params: {
             page,
             limit: pageSize,
-          },
-          headers: {
-            'Authorization': `Bearer ${HEYREACH_API_KEY}`,
-            'Content-Type': 'application/json',
           },
         }
       )

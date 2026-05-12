@@ -1,8 +1,7 @@
 import axios from 'axios'
 import type { AshbyRole } from '../types/index'
 
-const ASHBY_API_KEY = import.meta.env.VITE_ASHBY_API_KEY
-const ASHBY_BASE_URL = 'https://api.ashbyhq.com/graphql'
+const ASHBY_FUNCTION_URL = '/.netlify/functions/ashby'
 
 interface AshbyJobResponse {
   id: string
@@ -45,22 +44,11 @@ const ASHBY_QUERY = `
 `
 
 export async function fetchAshbyRoles(): Promise<AshbyRole[]> {
-  if (!ASHBY_API_KEY) {
-    console.error('VITE_ASHBY_API_KEY not set')
-    return []
-  }
-
   try {
     const response = await axios.post(
-      ASHBY_BASE_URL,
+      ASHBY_FUNCTION_URL,
       {
         query: ASHBY_QUERY,
-      },
-      {
-        headers: {
-          'Authorization': `Bearer ${ASHBY_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
       }
     )
 
