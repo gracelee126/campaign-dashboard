@@ -21,9 +21,9 @@ export default async (req, context) => {
     const page = body.page || 1;
     const limit = body.limit || 100;
 
-    // Try POST request with body parameters (disable redirects to see actual response)
+    // Use correct PascalCase endpoint pattern from HeyReach API docs
     const response = await axios.post(
-      `${HEYREACH_BASE_URL}/campaigns/fetch`,
+      `${HEYREACH_BASE_URL}/GetCampaigns`,
       {
         page,
         limit,
@@ -33,7 +33,6 @@ export default async (req, context) => {
           'X-API-KEY': HEYREACH_API_KEY,
           'Content-Type': 'application/json',
         },
-        maxRedirects: 0,
       }
     );
 
