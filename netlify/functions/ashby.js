@@ -7,7 +7,7 @@ export default async (req, context) => {
   }
 
   const ASHBY_API_KEY = process.env.ASHBY_API_KEY;
-  const ASHBY_BASE_URL = 'https://api.ashbyhq.com/graphql';
+  const ASHBY_BASE_URL = 'https://api.ashbyhq.com/job.list';
 
   if (!ASHBY_API_KEY) {
     return new Response(
