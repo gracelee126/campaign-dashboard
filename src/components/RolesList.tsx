@@ -49,11 +49,11 @@ export default function RolesList({ roles, campaigns }: RolesListProps) {
                 </div>
                 <div className="detail-item">
                   <span className="detail-label">Applications:</span>
-                  <span className="detail-value">{role.applicationCount}</span>
+                  <span className="detail-value">{role.applications}</span>
                 </div>
                 <div className="detail-item">
                   <span className="detail-label">Interviews:</span>
-                  <span className="detail-value">{role.interviewCount}</span>
+                  <span className="detail-value">{role.interviewsScheduled}</span>
                 </div>
               </div>
 

@@ -36,7 +36,7 @@ export default function CampaignTable({ campaigns }: CampaignTableProps) {
               <th>Senders</th>
               <th>Connection Rate</th>
               <th>Reply Rate</th>
-              <th>Avg Steps</th>
+              <th>Open Rate</th>
             </tr>
           </thead>
           <tbody>
@@ -53,15 +53,15 @@ export default function CampaignTable({ campaigns }: CampaignTableProps) {
                     {campaign.type}
                   </span>
                 </td>
-                <td>{campaign.senderCount || 0}</td>
+                <td>{campaign.senders.length}</td>
                 <td className="metric">
-                  {campaign.metrics.connectionRate.toFixed(1)}%
+                  {campaign.connectionRate.toFixed(1)}%
                 </td>
                 <td className="metric">
-                  {campaign.metrics.replyRate.toFixed(1)}%
+                  {campaign.replyRate.toFixed(1)}%
                 </td>
                 <td className="metric">
-                  {campaign.metrics.avgStepsToConnect.toFixed(1)}
+                  {campaign.openRate.toFixed(1)}%
                 </td>
               </tr>
             ))}
